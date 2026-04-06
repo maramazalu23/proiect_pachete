@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from sklearn.cluster import KMeans
 
-from utils.load_data import load_final_dataset
+from utils.load_data import load_final_dataset, load_traffic_raw
 
 st.set_page_config(page_title="Analiză statistică", page_icon="📊", layout="wide")
 
@@ -49,18 +49,26 @@ if selected_countries:
 # ==============================
 st.subheader("1. Verificarea valorilor lipsă")
 
-missing_df = filtered_df.isna().sum().reset_index()
+st.markdown("""
+Valorile lipsă sunt identificate din datele brute, **înainte** de aplicarea oricărei tratări.  
+Acest pas permite înțelegerea naturii și distribuției datelor incomplete.
+""")
+
+traffic_raw = load_traffic_raw()
+
+missing_df = traffic_raw.isna().sum().reset_index()
 missing_df.columns = ["coloana", "numar_valori_lipsa"]
 missing_df["procent_valori_lipsa"] = (
-    missing_df["numar_valori_lipsa"] / len(filtered_df) * 100
+    missing_df["numar_valori_lipsa"] / len(traffic_raw) * 100
 ).round(2)
 
 st.dataframe(missing_df, width="stretch")
 
 st.markdown("""
 **Interpretare:**  
-Identificarea valorilor lipsă reprezintă o etapă esențială în preprocesarea datelor.  
-În cadrul aplicației, valorile lipsă sunt tratate înainte de analiza statistică și predictivă.
+Coloanele `FLT_DEP_IFR_2`, `FLT_ARR_IFR_2` și `FLT_TOT_IFR_2` prezintă un număr ridicat de valori lipsă (~70%),  
+provenind din sursa secundară de date IFR. Acestea sunt eliminate din analiză, păstrând doar sursa primară (`FLT_TOT_1`).  
+Întârzierile lipsă (aeroporturi fără date ATFM) sunt completate cu valoarea 0, indicând absența întârzierilor înregistrate.
 """)
 
 st.markdown("---")
@@ -203,4 +211,36 @@ st.dataframe(cluster_summary, width="stretch")
 st.markdown("""
 **Interpretare:**  
 Tabelul de sinteză pe clustere ajută la caracterizarea fiecărui grup rezultat și la formularea unor concluzii comparative între aeroporturi.
+""")
+
+st.markdown("---")
+
+# ==============================
+# LOC SI ILOC
+# ==============================
+st.subheader("7. Accesarea datelor cu loc și iloc")
+
+st.markdown("""
+Pandas oferă două metode principale de accesare a datelor dintr-un DataFrame:
+- **`iloc`** — accesare prin **poziție numerică** (index întreg)
+- **`loc`** — accesare prin **etichetă** sau condiție logică
+""")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.markdown("**Primele 5 aeroporturi după trafic total (iloc)**")
+    st.dataframe(airport_stats.iloc[:5], width="stretch")
+    st.caption("airport_stats.iloc[:5] — primele 5 rânduri după poziție")
+
+with col2:
+    st.markdown("**Aeroporturi cu trafic total peste 1.000.000 (loc)**")
+    top_airports_loc = airport_stats.loc[airport_stats["total_traffic"] > 1_000_000]
+    st.dataframe(top_airports_loc, width="stretch")
+    st.caption("airport_stats.loc[airport_stats['total_traffic'] > 1_000_000]")
+
+st.markdown("""
+**Interpretare:**  
+`iloc` este util când cunoaștem poziția exactă a rândurilor dorite (ex. primele N înregistrări),  
+în timp ce `loc` permite filtrarea pe baza unor condiții logice aplicate valorilor din coloane.
 """)

@@ -39,26 +39,27 @@ st.markdown("---")
 st.markdown("""
 ## Obiectivele aplicației
 
-- analiza evoluției traficului aerian european;
-- analiza întârzierilor ATFM la nivel de aeroport;
-- evidențierea relației dintre trafic și întârzieri;
+- analiza evoluției traficului aerian european în perioada 2019–2023;
+- analiza întârzierilor ATFM la nivel de aeroport și pe categorii de cauze;
+- evidențierea impactului COVID-19 și a ratei de recuperare per țară;
 - aplicarea unor metode statistice și predictive pentru interpretarea datelor.
 """)
 
 st.markdown("""
 ## Structura aplicației
 
-Aplicația este organizată în patru pagini principale:
+Aplicația este organizată în cinci pagini principale:
 
-- **Trafic** — evoluția traficului aerian și clasamentul aeroporturilor;
-- **Întârzieri** — analiza întârzierilor ATFM și relația acestora cu traficul;
+- **Trafic** — evoluția traficului aerian, sezonalitate și clasamentul aeroporturilor;
+- **Întârzieri** — analiza întârzierilor ATFM pe cauze și eficiența operațională;
 - **Analiză** — prelucrare statistică, valori lipsă, codificare, scalare și clustering;
-- **Predicții** — model de regresie liniară pentru estimarea întârzierilor.
+- **Predicții** — analiză predictivă a relației dintre trafic și întârzieri prin regresie liniară;
+- **COVID** — analiza colapsului din 2020 și rata de recuperare per țară și aeroport.
+            
+Prin această structură, aplicația permite atât explorarea interactivă a datelor, cât și formularea unor concluzii economice relevante privind performanța traficului aerian european.
 """)
 
-st.info(
-    "Navigarea între secțiuni se face din meniul lateral al aplicației."
-)
+st.info("Navigarea între secțiuni se face din meniul lateral al aplicației.")
 
 st.markdown("---")
 
@@ -67,7 +68,7 @@ st.markdown("""
 
 Datele utilizate provin din portalul **EUROCONTROL Aviation Intelligence Portal**  
 și includ informații despre:
-- traficul aeroportuar zilnic;
-- întârzierile ATFM la sosire;
-- aeroporturi europene monitorizate în perioada 2019–2023.
+- traficul aeroportuar zilnic (IFR flights) — 562.436 înregistrări;
+- întârzierile ATFM la sosire pe 15 categorii de cauze — 493.221 înregistrări;
+- aeroporturi europene monitorizate: 333 aeroporturi din 42 de țări.
 """)

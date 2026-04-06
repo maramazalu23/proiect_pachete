@@ -174,3 +174,53 @@ table_summary = (
 )
 
 st.dataframe(table_summary, width="stretch")
+st.markdown("---")
+
+# ==============================
+# HEATMAP SEZONALITATE
+# ==============================
+st.subheader("Heatmap sezonalitate — trafic lunar per an")
+
+st.markdown("""
+Heatmap-ul evidențiază simultan sezonalitatea (distribuția pe luni) și evoluția anuală a traficului,  
+permițând o lectură vizuală rapidă a tiparelor de trafic.
+""")
+
+month_order = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+]
+month_labels = [
+    "Ian", "Feb", "Mar", "Apr", "Mai", "Iun",
+    "Iul", "Aug", "Sep", "Oct", "Nov", "Dec"
+]
+month_label_map = dict(zip(month_order, month_labels))
+
+heatmap_data = (
+    filtered_df.groupby(["year", "month", "month_name"], as_index=False)
+    .agg(total_traffic=("traffic", "sum"))
+)
+heatmap_data["month_label"] = heatmap_data["month_name"].map(month_label_map)
+
+heatmap_pivot = heatmap_data.pivot_table(
+    index="year", columns="month", values="total_traffic"
+)
+
+fig_heatmap = px.imshow(
+    heatmap_pivot,
+    labels={"x": "Luna", "y": "An", "color": "Trafic total"},
+    x=month_labels,
+    y=sorted(heatmap_data["year"].unique()),
+    color_continuous_scale="Blues",
+    title="Heatmap trafic aerian — lună vs an",
+    aspect="auto"
+)
+fig_heatmap.update_xaxes(side="bottom")
+st.plotly_chart(fig_heatmap, width="stretch")
+
+st.markdown("""
+**Interpretare:**  
+Culorile mai închise indică luni cu trafic ridicat. Tiparul sezonier european este clar:  
+lunile de vară (iulie–august) concentrează cel mai mare volum de zboruri, iar impactul  
+COVID-19 în 2020 este vizibil ca un rând complet estompat față de restul anilor.
+""")
