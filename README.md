@@ -51,39 +51,43 @@ Etapele principale ale prelucrării datelor au fost:
 
 ## Structura proiectului
 
+## Structura proiectului
 ```
-proiect-aviation/
+proiect_pachete/
 ├── README.md
-├── data/
-│   ├── raw/                          # Fișierele CSV originale descărcate de pe EUROCONTROL
-│   │   ├── airport_traffic_2019.csv
-│   │   ├── airport_traffic_2020.csv
-│   │   ├── airport_traffic_2021.csv
-│   │   ├── airport_traffic_2022.csv
-│   │   ├── airport_traffic_2023.csv
-│   │   ├── apt_dly_2019.csv
-│   │   ├── apt_dly_2020.csv
-│   │   ├── apt_dly_2021.csv
-│   │   ├── apt_dly_2022.csv
-│   │   └── apt_dly_2023.csv
-│   └── processed/                    # Date procesate generate în urma prelucrării
 ├── app/
-│   ├── app.py                        # Pagina principală Streamlit
+│   ├── 0_Acasa.py                        # Pagina principală Streamlit
+│   ├── data/
+│   │   ├── raw/                          # Fișierele CSV originale descărcate de pe EUROCONTROL
+│   │   │   ├── airport_traffic_2019.csv
+│   │   │   ├── airport_traffic_2020.csv
+│   │   │   ├── airport_traffic_2021.csv
+│   │   │   ├── airport_traffic_2022.csv
+│   │   │   ├── airport_traffic_2023.csv
+│   │   │   ├── apt_dly_2019.csv
+│   │   │   ├── apt_dly_2020.csv
+│   │   │   ├── apt_dly_2021.csv
+│   │   │   ├── apt_dly_2022.csv
+│   │   │   └── apt_dly_2023.csv
+│   │   └── processed/                    # Date procesate generate în urma prelucrării
 │   ├── pages/
-│   │   ├── 1_Trafic.py               # Evoluția traficului aerian 2019–2023
-│   │   ├── 2_Intarzieri.py           # Analiza întârzierilor ATFM pe cauze
-│   │   ├── 3_Analiza.py              # Statistici, grupări și clustering
-│   │   └── 4_Predictii.py            # Modele de regresie și clasificare
-│   ├── utils/                        # Funcții reutilizabile (încărcare, curățare, preprocesare)
+│   │   ├── 1_Trafic.py                   # Evoluția traficului aerian 2019–2023
+│   │   ├── 2_Intarzieri.py               # Analiza întârzierilor ATFM pe cauze
+│   │   ├── 3_Analiza.py                  # Statistici, grupări și clustering
+│   │   ├── 4_Predictii.py                # Analiză predictivă prin regresie liniară
+│   │   └── 5_Covid.py                    # Impactul COVID-19 și rata de recuperare
+│   ├── utils/                            # Funcții reutilizabile (încărcare, curățare, preprocesare)
+│   │   ├── export_data.py
+│   │   └── load_data.py
 │   └── requirements.txt
 └── sas/
-    ├── 01_import_date.sas            # Creare seturi de date SAS din CSV
-    ├── 02_formate_si_curatare.sas    # Formate definite de utilizator + curățare
-    ├── 03_procesare.sas              # Procesare iterativă și condițională
-    ├── 04_subseturi.sas              # Creare subseturi de date
-    ├── 05_combinare_sql.sas          # Îmbinare seturi de date (PROC SQL)
-    ├── 06_raportare_statistici.sas   # Statistici descriptive și grafice
-    └── output/                       # Rapoarte și grafice generate de SAS
+    ├── 01_import_date.sas                # Creare seturi de date SAS din CSV
+    ├── 02_formate_si_curatare.sas        # Formate definite de utilizator + curățare
+    ├── 03_procesare.sas                  # Procesare iterativă și condițională
+    ├── 04_subseturi.sas                  # Creare subseturi de date
+    ├── 05_combinare_sql.sas              # Îmbinare seturi de date (PROC SQL)
+    ├── 06_raportare_statistici.sas       # Statistici descriptive și grafice
+    └── output/                           # Rapoarte și grafice generate de SAS
 ```
 
 ---
