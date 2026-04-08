@@ -1,0 +1,1789 @@
+<!DOCTYPE html>
+<html class="ods_17b828ba-5138-4669-b0d3-978abee99400" lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8"/>
+<meta content="SAS 9.4" name="generator"/>
+<title>Results: 03_formats_subsets_reports.sas</title>
+<style>
+/*<![CDATA[*/
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c section > table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c section > pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c div > table,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c div > pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c article > table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c article > pre,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j section > table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j section > pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j div > table,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j div > pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j article > table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j article > pre,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c p.note, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c p.warning, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c p.error, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c p.fatal,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j p.note, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j p.warning, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j p.error, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j p.fatal,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body.c > table.layoutcontainer, .ods_17b828ba-5138-4669-b0d3-978abee99400 .body.j > table.layoutcontainer { margin-left: auto; margin-right: auto }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.l table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.l pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.l p.note,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.l p.warning, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.l p.error, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.l p.fatal { margin-left: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.c table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.c pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.c p.note,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.c p.warning, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.c p.error, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.c p.fatal { margin-left: auto; margin-right: auto }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r p.note,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r table, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r pre, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r p.note,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r p.warning, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r p.error, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion.r p.fatal { margin-right: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 article, .ods_17b828ba-5138-4669-b0d3-978abee99400 aside, .ods_17b828ba-5138-4669-b0d3-978abee99400 details, .ods_17b828ba-5138-4669-b0d3-978abee99400 figcaption, .ods_17b828ba-5138-4669-b0d3-978abee99400 figure, .ods_17b828ba-5138-4669-b0d3-978abee99400 footer, .ods_17b828ba-5138-4669-b0d3-978abee99400 header, .ods_17b828ba-5138-4669-b0d3-978abee99400 hgroup, .ods_17b828ba-5138-4669-b0d3-978abee99400 nav, .ods_17b828ba-5138-4669-b0d3-978abee99400 section { display: block }
+html.ods_17b828ba-5138-4669-b0d3-978abee99400 { font-size: 100% }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body { margin: 1em; font-size: 13px; line-height: 1.231 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 sup { position: relative; vertical-align: baseline; bottom: 0.25em; font-size: 0.8em }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 sub { position: relative; vertical-align: baseline; top: 0.25em; font-size: 0.8em }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 ul, .ods_17b828ba-5138-4669-b0d3-978abee99400 ol { margin: 1em 0; padding: 0 0 0 40px }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 dd { margin: 0 0 0 40px }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 nav ul, .ods_17b828ba-5138-4669-b0d3-978abee99400 nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 img { border: 0; vertical-align: middle }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 svg:not(:root) { overflow: hidden }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 figure { margin: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 table { border-collapse: collapse; border-spacing: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutcontainer { border-collapse: separate; border-spacing: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 p { margin-top: 0; text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 h1.heading1 { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 h2.heading2 { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 h3.heading3 { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 h4.heading4 { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 h5.heading5 { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 h6.heading6 { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 span { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 table { margin-bottom: 1em }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 td, .ods_17b828ba-5138-4669-b0d3-978abee99400 th { text-align: left; padding: 3px 6px; vertical-align: top }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 td[class$="fixed"], .ods_17b828ba-5138-4669-b0d3-978abee99400 th[class$="fixed"] { white-space: pre }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 section, .ods_17b828ba-5138-4669-b0d3-978abee99400 article { padding-top: 1px; padding-bottom: 8px }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 hr.pagebreak { height: 0px; border: 0; border-bottom: 1px solid #c0c0c0; margin: 1em 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .stacked-value { text-align: left; display: block }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .stacked-cell > .stacked-value, .ods_17b828ba-5138-4669-b0d3-978abee99400 td.data > td.data, .ods_17b828ba-5138-4669-b0d3-978abee99400 th.data > td.data, .ods_17b828ba-5138-4669-b0d3-978abee99400 th.data > th.data, .ods_17b828ba-5138-4669-b0d3-978abee99400 td.data > th.data, .ods_17b828ba-5138-4669-b0d3-978abee99400 th.header > th.header { border: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .stacked-cell > div.data { border-width: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer { white-space: nowrap; margin-bottom: 1em }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > p { margin: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > p > span { display: inline-block; width: 100%; white-space: normal }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .batch { display: table }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .toc { display: none }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .proc_note_group, .ods_17b828ba-5138-4669-b0d3-978abee99400 .proc_title_group { margin-bottom: 1em }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 p.proctitle { margin: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 p.note, .ods_17b828ba-5138-4669-b0d3-978abee99400 p.warning, .ods_17b828ba-5138-4669-b0d3-978abee99400 p.error, .ods_17b828ba-5138-4669-b0d3-978abee99400 p.fatal { display: table }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .notebanner, .ods_17b828ba-5138-4669-b0d3-978abee99400 .warnbanner, .ods_17b828ba-5138-4669-b0d3-978abee99400 .errorbanner, .ods_17b828ba-5138-4669-b0d3-978abee99400 .fatalbanner,
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .notecontent, .ods_17b828ba-5138-4669-b0d3-978abee99400 .warncontent, .ods_17b828ba-5138-4669-b0d3-978abee99400 .errorcontent, .ods_17b828ba-5138-4669-b0d3-978abee99400 .fatalcontent { display: table-cell; padding: 0.5em }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .notebanner, .ods_17b828ba-5138-4669-b0d3-978abee99400 .warnbanner, .ods_17b828ba-5138-4669-b0d3-978abee99400 .errorbanner, .ods_17b828ba-5138-4669-b0d3-978abee99400 .fatalbanner { padding-right: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body > div > ol li { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .beforecaption > h4 { margin-top: 0; margin-bottom: 0 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .c { text-align: center }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .r { text-align: right }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .l { text-align: left }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .j { text-align: justify }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .d { text-align: right }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .b { vertical-align: bottom }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .m { vertical-align: middle }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .t { vertical-align: top }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .accessiblecaption {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 a:active { color: #800080 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .aftercaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    padding-top: 4pt;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .batch > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .batch > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .batch > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .batch > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .batch { border: hidden; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .batch {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: 'SAS Monospace', 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    padding: 7px;
+    }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .beforecaption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .body {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .bodydate {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: right;
+    vertical-align: top;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .bycontentfolder {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .byline {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > colgroup > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > colgroup, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > * > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer > tfoot { border: none; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .bylinecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .caption {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .cell, .ods_17b828ba-5138-4669-b0d3-978abee99400 .container {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .contentfolder, .ods_17b828ba-5138-4669-b0d3-978abee99400 .contentitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .contentproclabel, .ods_17b828ba-5138-4669-b0d3-978abee99400 .contentprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .contents {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .contentsdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .contenttitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .continued {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .data, .ods_17b828ba-5138-4669-b0d3-978abee99400 .dataemphasis {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .dataemphasisfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .dataempty {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .datafixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .datastrong {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .datastrongfixed {
+    background-color: #ffffff;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .date {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .document {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .errorbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .errorcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .errorcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .extendedpage {
+    background-color: #fafbfe;
+    border-style: solid;
+    border-width: 1pt;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+    text-align: center;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .fatalbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .fatalcontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .fatalcontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .folderaction {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footer {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footeremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footeremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footerstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .footerstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .frame {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .graph > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .graph > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .graph > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .graph > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .graph { border: hidden; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .graph {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .header {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headeremphasis {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headeremphasisfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headerempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headerfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headersandfooters {
+    background-color: #edf2f9;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headerstrong {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .headerstrongfixed {
+    background-color: #d8dbd3;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #000000;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .heading1, .ods_17b828ba-5138-4669-b0d3-978abee99400 .heading2, .ods_17b828ba-5138-4669-b0d3-978abee99400 .heading3, .ods_17b828ba-5138-4669-b0d3-978abee99400 .heading4, .ods_17b828ba-5138-4669-b0d3-978abee99400 .heading5, .ods_17b828ba-5138-4669-b0d3-978abee99400 .heading6 { font-family: Arial, Helvetica, sans-serif }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .index {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .indexaction, .ods_17b828ba-5138-4669-b0d3-978abee99400 .indexitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .indexprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .indextitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutcontainer, .ods_17b828ba-5138-4669-b0d3-978abee99400 .layoutregion {
+    border-width: 0;
+    border-spacing: 30px;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .linecontent {
+    background-color: #fafbfe;
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 a:link { color: #0000ff }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .list {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .list10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .list2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .list3, .ods_17b828ba-5138-4669-b0d3-978abee99400 .list4, .ods_17b828ba-5138-4669-b0d3-978abee99400 .list5, .ods_17b828ba-5138-4669-b0d3-978abee99400 .list6, .ods_17b828ba-5138-4669-b0d3-978abee99400 .list7, .ods_17b828ba-5138-4669-b0d3-978abee99400 .list8, .ods_17b828ba-5138-4669-b0d3-978abee99400 .list9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: disc;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem10 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem2 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: circle;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem3, .ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem4, .ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem5, .ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem6, .ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem7, .ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem8, .ods_17b828ba-5138-4669-b0d3-978abee99400 .listitem9 {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: square;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .note {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .notebanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .notecontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .notecontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .output > colgroup {
+    border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .output > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .output > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .output > tfoot {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .output { border: hidden; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .output {
+    background-color: #fafbfe;
+    border: 1px solid #c1c1c1;
+    border-collapse: separate;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .pageno {
+    background-color: #fafbfe;
+    border-spacing: 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    text-align: right;
+    vertical-align: top;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .pages {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: decimal;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .pagesdate {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .pagesitem {
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    list-style-type: none;
+    margin-left: 6pt;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .pagesproclabel, .ods_17b828ba-5138-4669-b0d3-978abee99400 .pagesprocname {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .pagestitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .paragraph {
+    background-color: #fafbfe;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > colgroup > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > colgroup, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > * > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip > tfoot { border: none; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .parskip {
+    border: none;
+    border-spacing: 0;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+    }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .prepage {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    text-align: left;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .proctitle {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .proctitlefixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooter {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooteremphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooteremphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooterempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooterfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooterstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowfooterstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheader {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheaderemphasis {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheaderemphasisfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: italic;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheaderempty {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheaderfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheaderstrong {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .rowheaderstrongfixed {
+    background-color: #edf2f9;
+    border-color: #b0b7bb;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    color: #112277;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter10, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter2, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter3, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter4, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter5, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter6, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter7, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter8, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemfooter9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle10, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle2, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle3, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle4, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle5, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle6, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle7, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle8, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systemtitle9 {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > colgroup > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > colgroup, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > * > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer > tfoot { border: none; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .systitleandfootercontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .table > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .table > colgroup > col {
+    border-left: 1px solid #c1c1c1;
+    border-right: 0 solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .table > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .table > * > tr {
+    border-top: 1px solid #c1c1c1;
+    border-bottom: 0 solid #c1c1c1;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .table { border: hidden; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .table {
+    border-color: #c1c1c1;
+    border-style: solid;
+    border-width: 1px 0 0 1px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > colgroup > col, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > colgroup, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > * > tr, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > thead, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > tbody, .ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer > tfoot { border: none; }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .titleandnotecontainer {
+    background-color: #fafbfe;
+    border: none;
+    border-spacing: 1px;
+    color: #000000;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+    width: 100%;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .titlesandfooters {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .usertext {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 a:visited { color: #800080 }
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .warnbanner {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: bold;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .warncontent {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: Arial, 'Albany AMT', Helvetica, Helv;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+.ods_17b828ba-5138-4669-b0d3-978abee99400 .warncontentfixed {
+    background-color: #fafbfe;
+    color: #112277;
+    font-family: 'Courier New', Courier;
+    font-size: x-small;
+    font-style: normal;
+    font-weight: normal;
+}
+/*]]>*/
+</style>
+</head>
+<body class="body">
+<div id="div_17b828ba-5138-4669-b0d3-978abee99400" class="c body">
+<h1 class="body toc">Results: 03_formats_subsets_reports.sas</h1>
+<section data-name="Freq" data-sec-type="proc">
+<div id="IDX" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Distributia observatiilor pe perioade</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table period_label</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Perioada de analiza</th>
+</tr>
+<tr>
+<th class="b header" scope="col">period_label</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">COVID</th>
+<td class="r data">220249</td>
+<td class="r data">39.16</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Post-COVID</th>
+<td class="r data">228211</td>
+<td class="r data">40.58</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Pre-COVID</th>
+<td class="r data">113975</td>
+<td class="r data">20.26</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Freq" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX1" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Distributia observatiilor pe categorii de trafic</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table traffic_category</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Categorie trafic</th>
+</tr>
+<tr>
+<th class="b header" scope="col">traffic_category</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Trafic foarte redus</th>
+<td class="r data">331344</td>
+<td class="r data">58.91</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Trafic foarte ridicat</th>
+<td class="r data">57963</td>
+<td class="r data">10.31</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Trafic redus-mediu</th>
+<td class="r data">108523</td>
+<td class="r data">19.30</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Trafic ridicat</th>
+<td class="r data">64605</td>
+<td class="r data">11.49</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Freq" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX2" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Distributia observatiilor pe categorii de intarziere</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table delay_category</h1>
+<article aria-label="One-Way Frequencies">
+<h1 class="contentitem toc">One-Way Frequencies</h1>
+<table class="table" style="border-spacing: 0" aria-label="One-Way Frequencies">
+<caption aria-label="One-Way Frequencies"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c b header" colspan="3" scope="colgroup">Categorie intarziere</th>
+</tr>
+<tr>
+<th class="b header" scope="col">delay_category</th>
+<th class="r b header" scope="col">Frequency</th>
+<th class="r b header" scope="col">Percent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="rowheader" scope="row">Fara intarzieri</th>
+<td class="r data">533256</td>
+<td class="r data">94.81</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Intarzieri mari</th>
+<td class="r data">19453</td>
+<td class="r data">3.46</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Intarzieri moderate</th>
+<td class="r data">6575</td>
+<td class="r data">1.17</td>
+</tr>
+<tr>
+<th class="rowheader" scope="row">Intarzieri reduse</th>
+<td class="r data">3151</td>
+<td class="r data">0.56</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Freq" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX3" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Perioada de analiza versus categoria de trafic</span> </p>
+</div>
+<div class="proc_title_group">
+<p class="c proctitle">The FREQ Procedure</p>
+</div>
+<h1 class="contentprocname toc">The Freq Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Table period_label * traffic_category</h1>
+<article aria-label="Cross-Tabular Freq Table">
+<h1 class="contentitem toc">Cross-Tabular Freq Table</h1>
+<table role="presentation">
+<tr>
+<td class="c t"><table class="table" style="border-spacing: 0">
+<colgroup><col/></colgroup>
+<tbody>
+<tr>
+<th class="t header" scope="col">
+<div class="stacked-cell">
+<div class="t">Frequency</div>
+</div>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+<td><table class="table" style="border-spacing: 0" aria-label="Cross-Tabular Freq Table">
+<caption aria-label="Cross-Tabular Freq Table"></caption>
+<colgroup><col/></colgroup><colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c header" colspan="6" scope="colgroup">Table&#160;of&#160;period_label&#160;by&#160;traffic_category</th>
+</tr>
+<tr>
+<th class="c b header" rowspan="2" scope="col">period_label(Perioada de analiza)</th>
+<th class="c b header" colspan="5" scope="colgroup">traffic_category(Categorie trafic)</th>
+</tr>
+<tr>
+<th class="r header" scope="col">Trafic foarte redus</th>
+<th class="r header" scope="col">Trafic foarte ridicat</th>
+<th class="r header" scope="col">Trafic redus-mediu</th>
+<th class="r header" scope="col">Trafic ridicat</th>
+<th class="r header" scope="col">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th class="t rowheader" scope="row">COVID</th>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">145739</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">12624</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">42501</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">19385</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">220249</div>
+</div>
+</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">Post-COVID</th>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">125066</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">28734</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">44594</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">29817</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">228211</div>
+</div>
+</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">Pre-COVID</th>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">60539</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">16605</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">21428</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">15403</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">113975</div>
+</div>
+</td>
+</tr>
+<tr>
+<th class="t rowheader" scope="row">Total</th>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">331344</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">57963</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">108523</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">64605</div>
+</div>
+</td>
+<td class="r t data">
+<div class="stacked-cell">
+<div class="r t">562435</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Report" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX4" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Top 15 tari dupa traficul total</span> </p>
+</div>
+<h1 class="contentprocname toc">The Report Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Detailed and/or summarized report</h1>
+<article aria-label="Table 1">
+<h1 class="contentitem toc">Table 1</h1>
+<table class="table" style="border-spacing: 0" aria-label="Detailed and/or summarized report">
+<caption aria-label="Detailed and/or summarized report"></caption>
+<colgroup><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c header" scope="col">Tara</th>
+<th class="c header" scope="col">Trafic total</th>
+<th class="c header" scope="col">Intarziere totala</th>
+<th class="c header" scope="col">Intarziere medie<br/>zbor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">Spain</td>
+<td class="r data">8,344,587</td>
+<td class="r data">1,786,578</td>
+<td class="r data">0.21</td>
+</tr>
+<tr>
+<td class="data">United Kingdom</td>
+<td class="r data">7,337,167</td>
+<td class="r data">3,081,227</td>
+<td class="r data">0.42</td>
+</tr>
+<tr>
+<td class="data">France</td>
+<td class="r data">7,166,410</td>
+<td class="r data">1,735,569</td>
+<td class="r data">0.24</td>
+</tr>
+<tr>
+<td class="data">Germany</td>
+<td class="r data">7,054,412</td>
+<td class="r data">1,316,130</td>
+<td class="r data">0.19</td>
+</tr>
+<tr>
+<td class="data">Italy</td>
+<td class="r data">4,739,306</td>
+<td class="r data">453,779</td>
+<td class="r data">0.10</td>
+</tr>
+<tr>
+<td class="data">Türkiye</td>
+<td class="r data">4,357,966</td>
+<td class="r data">1,030,754</td>
+<td class="r data">0.24</td>
+</tr>
+<tr>
+<td class="data">Norway</td>
+<td class="r data">3,044,967</td>
+<td class="r data">98,569</td>
+<td class="r data">0.03</td>
+</tr>
+<tr>
+<td class="data">Greece</td>
+<td class="r data">2,168,167</td>
+<td class="r data">2,244,809</td>
+<td class="r data">1.04</td>
+</tr>
+<tr>
+<td class="data">Netherlands</td>
+<td class="r data">2,106,230</td>
+<td class="r data">2,354,342</td>
+<td class="r data">1.12</td>
+</tr>
+<tr>
+<td class="data">Portugal</td>
+<td class="r data">1,792,219</td>
+<td class="r data">1,883,018</td>
+<td class="r data">1.05</td>
+</tr>
+<tr>
+<td class="data">Poland</td>
+<td class="r data">1,691,220</td>
+<td class="r data">137,511</td>
+<td class="r data">0.08</td>
+</tr>
+<tr>
+<td class="data">Switzerland</td>
+<td class="r data">1,659,802</td>
+<td class="r data">772,737</td>
+<td class="r data">0.47</td>
+</tr>
+<tr>
+<td class="data">Belgium</td>
+<td class="r data">1,297,826</td>
+<td class="r data">182,035</td>
+<td class="r data">0.14</td>
+</tr>
+<tr>
+<td class="data">Austria</td>
+<td class="r data">1,268,294</td>
+<td class="r data">226,758</td>
+<td class="r data">0.18</td>
+</tr>
+<tr>
+<td class="data">Sweden</td>
+<td class="r data">1,148,654</td>
+<td class="r data">91,738</td>
+<td class="r data">0.08</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="Report" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX5" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Sinteza anuala a traficului si intarzierilor</span> </p>
+</div>
+<h1 class="contentprocname toc">The Report Procedure</h1>
+<section>
+<h1 class="contentfolder toc">Detailed and/or summarized report</h1>
+<article aria-label="Table 1">
+<h1 class="contentitem toc">Table 1</h1>
+<table class="table" style="border-spacing: 0" aria-label="Detailed and/or summarized report">
+<caption aria-label="Detailed and/or summarized report"></caption>
+<colgroup><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="c header" scope="col">An</th>
+<th class="c header" scope="col">Perioada</th>
+<th class="c header" scope="col">Trafic total</th>
+<th class="c header" scope="col">Intarziere totala</th>
+<th class="c header" scope="col">Intarziere medie<br/>zbor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">2019</td>
+<td class="data">Pre-COVID</td>
+<td class="r data">17,185,911</td>
+<td class="r data">6,568,644</td>
+<td class="r data">0.38</td>
+</tr>
+<tr>
+<td class="r data">2020</td>
+<td class="data">COVID</td>
+<td class="r data">7,417,016</td>
+<td class="r data">979,625</td>
+<td class="r data">0.13</td>
+</tr>
+<tr>
+<td class="r data">2021</td>
+<td class="data">COVID</td>
+<td class="r data">9,252,593</td>
+<td class="r data">1,076,215</td>
+<td class="r data">0.12</td>
+</tr>
+<tr>
+<td class="r data">2022</td>
+<td class="data">Post-COVID</td>
+<td class="r data">14,356,972</td>
+<td class="r data">3,650,126</td>
+<td class="r data">0.25</td>
+</tr>
+<tr>
+<td class="r data">2023</td>
+<td class="data">Post-COVID</td>
+<td class="r data">15,764,547</td>
+<td class="r data">6,479,376</td>
+<td class="r data">0.41</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</section>
+<section data-name="SQL" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX6" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Numar observatii in seturile create la etapa 3</span> </p>
+</div>
+<h1 class="contentprocname toc">The SQL Procedure</h1>
+<article aria-label="Query Results">
+<h1 class="contentitem toc">Query Results</h1>
+<table class="table" style="border-spacing: 0" aria-label="Query Results">
+<caption aria-label="Query Results"></caption>
+<colgroup><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="b header" scope="col">tabel</th>
+<th class="r b header" scope="col">observatii</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="data">ANALYSIS_DATASET</td>
+<td class="r data">562435</td>
+</tr>
+<tr>
+<td class="data">PRE_COVID</td>
+<td class="r data">113975</td>
+</tr>
+<tr>
+<td class="data">COVID_PERIOD</td>
+<td class="r data">220249</td>
+</tr>
+<tr>
+<td class="data">POST_COVID_PERIOD</td>
+<td class="r data">228211</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+<section data-name="Print" data-sec-type="proc">
+<hr class="pagebreak"/>
+<div id="IDX7" class="systitleandfootercontainer" style="border-spacing: 1px">
+<p><span class="c systemtitle">Primele 10 observatii din ANALYSIS_DATASET</span> </p>
+</div>
+<h1 class="contentprocname toc">The Print Procedure</h1>
+<article aria-label="Data Set PROJ.ANALYSIS_DATASET">
+<h1 class="contentitem toc">Data Set PROJ.ANALYSIS_DATASET</h1>
+<table class="table" style="border-spacing: 0" aria-label="Data Set PROJ.ANALYSIS_DATASET">
+<caption aria-label="Data Set PROJ.ANALYSIS_DATASET"></caption>
+<colgroup><col/><col/><col/><col/><col/><col/><col/><col/><col/></colgroup>
+<thead>
+<tr>
+<th class="r header" scope="col">FLT_DATE</th>
+<th class="header" scope="col">APT_ICAO</th>
+<th class="header" scope="col">STATE_NAME</th>
+<th class="r header" scope="col">traffic</th>
+<th class="r header" scope="col">total_delay</th>
+<th class="header" scope="col">period_label</th>
+<th class="header" scope="col">traffic_category</th>
+<th class="header" scope="col">delay_category</th>
+<th class="r header" scope="col">avg_delay_per_flight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="r data">2019-01-01</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">55</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-02</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">69</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-03</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">77</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-04</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">77</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-05</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">70</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-06</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">80</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-07</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">75</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-08</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">62</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-09</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">75</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+<tr>
+<td class="r data">2019-01-10</td>
+<td class="data">LATI</td>
+<td class="data">Albania</td>
+<td class="r data">67</td>
+<td class="r data">0</td>
+<td class="data">Pre-COVID</td>
+<td class="data">Trafic redus-mediu</td>
+<td class="data">Fara intarzieri</td>
+<td class="r data">0</td>
+</tr>
+</tbody>
+</table>
+</article>
+</section>
+</div>
+</body>
+</html>
