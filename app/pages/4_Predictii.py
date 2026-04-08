@@ -1,6 +1,7 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
+import statsmodels.api as sm
 
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
@@ -174,3 +175,81 @@ st.markdown("""
 Coeficientul asociat traficului total indică direcția și intensitatea relației estimate dintre volum și întârziere.  
 Un coeficient pozitiv sugerează că un trafic mai ridicat este asociat, în medie, cu întârzieri mai mari.
 """)
+
+st.markdown("---")
+
+# ==============================
+# STATSMODELS - REGRESIE MULTIPLA
+# ==============================
+st.subheader("6. Regresie multiplă")
+
+st.markdown("""
+Pentru a completa analiza predictivă, a fost estimat și un model de **regresie multiplă OLS**
+folosind pachetul `statsmodels`.
+
+Variabila explicată este **întârzierea totală**, iar predictorii utilizați sunt:
+- traficul total;
+- traficul mediu zilnic;
+- numărul de zile active observate pentru fiecare aeroport.
+""")
+
+multi_df = (
+    filtered_df.groupby(["APT_ICAO", "APT_NAME", "STATE_NAME"], as_index=False)
+    .agg(
+        total_traffic=("traffic", "sum"),
+        avg_daily_traffic=("traffic", "mean"),
+        active_days=("FLT_DATE", "nunique"),
+        total_delay=("total_delay", "sum")
+    )
+    .dropna()
+)
+
+X_multi = multi_df[["total_traffic", "avg_daily_traffic", "active_days"]]
+y_multi = multi_df["total_delay"]
+
+X_multi_const = sm.add_constant(X_multi)
+ols_model = sm.OLS(y_multi, X_multi_const).fit()
+
+# KPI-uri model
+col1, col2, col3 = st.columns(3)
+
+with col1:
+    st.metric("R² ajustat", f"{ols_model.rsquared_adj:.4f}")
+
+with col2:
+    st.metric("Prob(F-statistic)", f"{ols_model.f_pvalue:.4e}")
+
+with col3:
+    st.metric("Număr observații", int(ols_model.nobs))
+
+st.markdown("### Coeficienții modelului")
+
+coef_labels = {
+    "const": "Constantă",
+    "total_traffic": "Trafic total",
+    "avg_daily_traffic": "Trafic mediu zilnic",
+    "active_days": "Număr zile active"
+}
+
+coef_table = pd.DataFrame({
+    "Variabilă": [coef_labels.get(idx, idx) for idx in ols_model.params.index],
+    "Coeficient": ols_model.params.values,
+    "Semnificație statistică": [
+        "Semnificativ" if p < 0.05 else "Nesemnificativ"
+        for p in ols_model.pvalues.values
+    ]
+})
+
+coef_table["Coeficient"] = coef_table["Coeficient"].round(4)
+
+st.dataframe(coef_table, width="stretch", hide_index=True)
+
+st.markdown("""
+**Interpretare:**  
+Modelul estimează influența simultană a mai multor factori operaționali asupra întârzierii totale.  
+Coeficienții pozitivi indică o relație directă cu întârzierea, iar eticheta de semnificație statistică
+arată dacă influența estimată este suficient de puternică pentru a fi considerată relevantă în model.
+""")
+
+with st.expander("Afișează rezumatul tehnic complet al modelului (statsmodels)"):
+    st.text(ols_model.summary().as_text())

@@ -14,7 +14,7 @@ Analiza urmărește identificarea relației dintre volumul traficului aerian și
 
 Proiectul este structurat în două componente principale:
 
-* **Python** — aplicație interactivă dezvoltată în Streamlit pentru explorarea și analiza datelor
+* **Python** — aplicație interactivă dezvoltată în Streamlit pentru explorarea datelor, analiză statistică, modelare predictivă și vizualizare interactivă
 * **SAS** — prelucrări statistice, proceduri descriptive, raportare și generare de grafice
 
 ---
@@ -45,7 +45,7 @@ Etapele principale ale prelucrării datelor au fost:
 * tratarea valorilor lipsă
 * agregarea datelor la nivel lunar și anual
 * calculul indicatorilor statistici relevanți (medii, variații)
-* analiza relațiilor dintre variabile prin metode statistice și modele predictive
+* analiza relațiilor dintre variabile prin metode statistice, clusterizare, regresie liniară și regresie multiplă
 
 ---
 
@@ -97,16 +97,19 @@ proiect_pachete/
 
 ### Python (Streamlit)
 
-| # | Facilitate               | Descriere                                           |
-| - | ------------------------ | --------------------------------------------------- |
-| 1 | Structură multi-pagină   | Organizarea aplicației pe mai multe pagini          |
-| 2 | Filtrare interactivă     | Utilizarea widget-urilor pentru selecția datelor    |
-| 3 | Import date CSV          | Încărcarea și combinarea fișierelor folosind pandas |
-| 4 | Tratarea valorilor lipsă | Curățarea și completarea datelor                    |
-| 5 | Preprocesare date        | Codificarea variabilelor categoriale și scalare     |
-| 6 | Agregare și grupare      | Analiza datelor prin `groupby`                      |
-| 7 | Vizualizare date         | Grafice interactive realizate cu Plotly             |
-| 8 | Machine Learning         | Modele de regresie și clustering (scikit-learn)     |
+| #  | Facilitate                                    | Descriere                                                                  |
+|----|-----------------------------------------------|----------------------------------------------------------------------------|
+| 1  | Structură multi-pagină                        | Organizarea aplicației pe mai multe pagini                                 |
+| 2  | Filtrare interactivă                          | Utilizarea widget-urilor pentru selecția datelor și a graficelor           |
+| 3  | Import date CSV                               | Încărcarea și combinarea fișierelor CSV folosind `pandas`                  |
+| 4  | Tratarea valorilor lipsă                      | Identificarea și completarea valorilor lipsă în etapa de preprocesare      |
+| 5  | Codificare și scalare                         | Codificarea variabilelor categoriale și scalarea variabilelor numerice     |
+| 6  | Agregare și grupare                           | Prelucrări statistice prin `groupby`, agregări și tabele de sinteză        |
+| 7  | Accesarea datelor cu `loc` și `iloc`          | Selecția observațiilor prin poziție și prin condiții logice                |
+| 8  | Vizualizare dinamică                          | Grafice interactive realizate cu `plotly`                                  |
+| 9  | Machine Learning cu scikit-learn             | Clusterizare K-Means și regresie liniară                                   |
+| 10 | Regresie multiplă cu statsmodels             | Estimarea unui model OLS pentru explicarea întârzierilor totale            |
+| 11 | Afișarea metricilor                           | Utilizarea `st.metric` pentru indicatori-cheie și metrici ai modelelor     |
 
 ---
 
