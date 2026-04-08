@@ -15,7 +15,7 @@ Analiza urmărește identificarea relației dintre volumul traficului aerian și
 Proiectul este structurat în două componente principale:
 
 * **Python** — aplicație interactivă dezvoltată în Streamlit pentru explorarea și analiza datelor
-* **SAS** — prelucrări statistice, raportare și generare de grafice
+* **SAS** — prelucrări statistice, proceduri descriptive, raportare și generare de grafice
 
 ---
 
@@ -50,8 +50,6 @@ Etapele principale ale prelucrării datelor au fost:
 ---
 
 ## Structura proiectului
-
-## Structura proiectului
 ```
 proiect_pachete/
 ├── README.md
@@ -81,13 +79,16 @@ proiect_pachete/
 │   │   └── load_data.py
 │   └── requirements.txt
 └── sas/
-    ├── 01_import_date.sas                # Creare seturi de date SAS din CSV
-    ├── 02_formate_si_curatare.sas        # Formate definite de utilizator + curățare
-    ├── 03_procesare.sas                  # Procesare iterativă și condițională
-    ├── 04_subseturi.sas                  # Creare subseturi de date
-    ├── 05_combinare_sql.sas              # Îmbinare seturi de date (PROC SQL)
-    ├── 06_raportare_statistici.sas       # Statistici descriptive și grafice
-    └── output/                           # Rapoarte și grafice generate de SAS
+    ├── 01_import_raw.sas                         # Importul fișierelor CSV brute în SAS
+    ├── 01_import_raw-results.html                # Rezultatele rulării scriptului de import
+    ├── 02_build_final_dataset.sas                # Construirea setului final de date
+    ├── 02_build_final_dataset-results.html       # Rezultatele construirii setului final
+    ├── 03_formats_subsets_reports.sas            # Formate, subseturi și raportare
+    ├── 03_formats_subsets_reports-results.html   # Rezultatele aferente raportării
+    ├── 04_statistical_procedures.sas             # Proceduri statistice descriptive
+    ├── 04_statistical_procedures-results.html    # Rezultatele procedurilor statistice
+    ├── 05_graphs.sas                             # Generare grafice în SAS
+    └── 05_graphs-results.html                    # Grafice și rezultate generate
 ```
 
 ---
@@ -127,14 +128,14 @@ proiect_pachete/
 ### Cerințe
 
 * Python 3.9+
-* Fișierele CSV plasate în directorul `data/raw/`
+* Fișierele CSV plasate în directorul `app/data/raw/`
 
 ### Pași
 
 ```bash
 # Clonare repository
-git clone https://github.com/username/proiect-aviation.git
-cd proiect-aviation
+git clone https://github.com/username/proiect_pachete.git
+cd proiect_pachete
 
 # Creare mediu virtual
 python -m venv .venv
@@ -147,7 +148,7 @@ source .venv/bin/activate
 pip install -r app/requirements.txt
 
 # Rulare aplicație
-streamlit run app/app.py
+python -m streamlit run app/0_Acasa.py
 ```
 
 ---

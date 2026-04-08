@@ -32,6 +32,7 @@ def load_traffic_data(path_pattern=None):
     traffic["FLT_DATE"] = pd.to_datetime(traffic["FLT_DATE"], errors="coerce")
     traffic["FLT_TOT_1"] = pd.to_numeric(traffic["FLT_TOT_1"], errors="coerce")
     traffic = traffic.dropna(subset=["FLT_DATE", "APT_ICAO"])
+    traffic = traffic.drop_duplicates(subset=["FLT_DATE", "APT_ICAO"])
     traffic = traffic.rename(columns={"FLT_TOT_1": "traffic"})
 
     return traffic
@@ -104,15 +105,15 @@ def load_delay_by_cause():
         "DLY_APT_ARR_D_1": "Deficiente de date",
         "DLY_APT_ARR_E_1": "Echipament (tehnic)",
         "DLY_APT_ARR_G_1": "ATC general",
-        "DLY_APT_ARR_I_1": "Infrastructura aeroport",
+        "DLY_APT_ARR_I_1": "Infrastructură aeroport",
         "DLY_APT_ARR_M_1": "Evenimente militare",
         "DLY_APT_ARR_N_1": "Personal ATC",
         "DLY_APT_ARR_O_1": "Alte cauze",
         "DLY_APT_ARR_P_1": "Personal aeroport",
         "DLY_APT_ARR_R_1": "Rutare",
-        "DLY_APT_ARR_S_1": "Spatiu aerian restrictiv",
+        "DLY_APT_ARR_S_1": "Spațiu aerian restrictiv",
         "DLY_APT_ARR_T_1": "Trafic / congestie",
-        "DLY_APT_ARR_V_1": "Conditii meteo en-route",
+        "DLY_APT_ARR_V_1": "Condiții meteo en-route",
         "DLY_APT_ARR_W_1": "Vreme / meteo aeroport",
         "DLY_APT_ARR_NA_1": "Necategorizat",
     }
