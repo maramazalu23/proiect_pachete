@@ -163,4 +163,4 @@ python -m streamlit run app/0_Acasa.py
 | Mazâlu Mara     | Dezvoltare aplicație Python (Streamlit) și analiză exploratorie |
 | Mitu Ana-Maria-Antonia | Analiză statistică și prelucrare date în SAS                    |
 
-Facultatea CSIE — Pachete Software, Anul III, 2024–2025
+CSIE, Grupa 1091, Seria D
