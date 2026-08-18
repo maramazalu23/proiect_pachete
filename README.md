@@ -1,62 +1,63 @@
-# Analiza performanței traficului aerian european și a întârzierilor ATFM (2019–2023)
+# Analysis of European Air Traffic Performance and ATFM Delays (2019–2023)
 
-Proiect realizat în cadrul disciplinei **Pachete Software** — Facultatea CSIE, anul III.
-
----
-
-## Descriere
-
-Proiectul analizează performanța traficului aerian european în perioada 2019–2023, utilizând date oficiale furnizate de **EUROCONTROL** prin intermediul portalului [Aviation Intelligence Portal](https://ansperformance.eu/data/).
-
-Perioada analizată acoperă un context economic relevant: traficul pre-pandemic (2019), scăderea drastică din perioada COVID-19 (2020), redresarea treptată (2021–2022) și revenirea la un nivel apropiat de normalitate (2023).
-
-Analiza urmărește identificarea relației dintre volumul traficului aerian și întârzierile operaționale (ATFM), precum și evaluarea eficienței aeroporturilor în diferite contexte economice.
-
-Proiectul este structurat în două componente principale:
-
-* **Python** — aplicație interactivă dezvoltată în Streamlit pentru explorarea datelor, analiză statistică, modelare predictivă și vizualizare interactivă
-* **SAS** — prelucrări statistice, proceduri descriptive, raportare și generare de grafice
+Project developed as part of the **Software Packages** course — Faculty of CSIE, Year III.
 
 ---
 
-## Date utilizate
+## Description
 
-Sursa datelor: [EUROCONTROL Aviation Intelligence Portal](https://ansperformance.eu/data/) — date oficiale, gratuite, care acoperă aeroporturile europene monitorizate.
+The project analyzes the performance of European air traffic during the 2019–2023 period, using official data provided by **EUROCONTROL** through the [Aviation Intelligence Portal](https://ansperformance.eu/data/).
 
-| Fișier                     | Descriere                                                    | Perioadă  |
-| -------------------------- | ------------------------------------------------------------ | --------- |
-| `airport_traffic_YYYY.csv` | Zboruri IFR zilnice (sosiri + plecări) per aeroport          | 2019–2023 |
-| `apt_dly_YYYY.csv`         | Întârzieri ATFM la sosire per aeroport și categorie de cauză | 2019–2023 |
+The analyzed period covers a relevant economic context: pre-pandemic traffic (2019), the drastic decline during the COVID-19 period (2020), the gradual recovery (2021–2022), and the return to a level close to normality (2023).
 
-**Dimensiunea datelor:**
+The analysis aims to identify the relationship between air traffic volume and operational delays (ATFM), as well as to evaluate airport efficiency under different economic contexts.
 
-* Airport Traffic: ~562.000 înregistrări, 333 aeroporturi, 42 țări
-* ATFM Delays: ~493.000 înregistrări, 15 categorii de cauze
+The project is structured into two main components:
 
----
-
-## Metodologie
-
-Analiza a fost realizată prin integrarea a două seturi de date la nivel de aeroport și zi, utilizând drept chei comune codul aeroportului și data calendaristică.
-
-Etapele principale ale prelucrării datelor au fost:
-
-* curățarea și standardizarea formatelor (date, coduri aeroport)
-* tratarea valorilor lipsă
-* agregarea datelor la nivel lunar și anual
-* calculul indicatorilor statistici relevanți (medii, variații)
-* analiza relațiilor dintre variabile prin metode statistice, clusterizare, regresie liniară și regresie multiplă
+* **Python** — interactive application developed in Streamlit for data exploration, statistical analysis, predictive modeling, and interactive visualization
+* **SAS** — statistical processing, descriptive procedures, reporting, and graph generation
 
 ---
 
-## Structura proiectului
-```
+## Data used
+
+Data source: [EUROCONTROL Aviation Intelligence Portal](https://ansperformance.eu/data/) — official, freely available data covering monitored European airports.
+
+| File                       | Description                                                 | Period    |
+| -------------------------- | ----------------------------------------------------------- | --------- |
+| `airport_traffic_YYYY.csv` | Daily IFR flights (arrivals + departures) per airport       | 2019–2023 |
+| `apt_dly_YYYY.csv`         | Arrival ATFM delays per airport and cause category          | 2019–2023 |
+
+**Data size:**
+
+* Airport Traffic: ~562,000 records, 333 airports, 42 countries
+* ATFM Delays: ~493,000 records, 15 cause categories
+
+---
+
+## Methodology
+
+The analysis was performed by integrating two datasets at the airport and day level, using the airport code and calendar date as common keys.
+
+The main data processing stages were:
+
+* cleaning and standardizing formats (dates, airport codes)
+* handling missing values
+* aggregating data at monthly and annual levels
+* calculating relevant statistical indicators (averages, variations)
+* analyzing relationships between variables through statistical methods, clustering, linear regression, and multiple regression
+
+---
+
+## Project structure
+
+```text
 proiect_pachete/
 ├── README.md
 ├── app/
-│   ├── 0_Acasa.py                        # Pagina principală Streamlit
+│   ├── 0_Acasa.py                        # Main Streamlit page
 │   ├── data/
-│   │   ├── raw/                          # Fișierele CSV originale descărcate de pe EUROCONTROL
+│   │   ├── raw/                          # Original CSV files downloaded from EUROCONTROL
 │   │   │   ├── airport_traffic_2019.csv
 │   │   │   ├── airport_traffic_2020.csv
 │   │   │   ├── airport_traffic_2021.csv
@@ -67,100 +68,100 @@ proiect_pachete/
 │   │   │   ├── apt_dly_2021.csv
 │   │   │   ├── apt_dly_2022.csv
 │   │   │   └── apt_dly_2023.csv
-│   │   └── processed/                    # Date procesate generate în urma prelucrării
+│   │   └── processed/                    # Processed data generated after processing
 │   ├── pages/
-│   │   ├── 1_Trafic.py                   # Evoluția traficului aerian 2019–2023
-│   │   ├── 2_Intarzieri.py               # Analiza întârzierilor ATFM pe cauze
-│   │   ├── 3_Analiza.py                  # Statistici, grupări și clustering
-│   │   ├── 4_Predictii.py                # Analiză predictivă prin regresie liniară
-│   │   └── 5_Covid.py                    # Impactul COVID-19 și rata de recuperare
-│   ├── utils/                            # Funcții reutilizabile (încărcare, curățare, preprocesare)
+│   │   ├── 1_Trafic.py                   # Evolution of air traffic 2019–2023
+│   │   ├── 2_Intarzieri.py               # Analysis of ATFM delays by cause
+│   │   ├── 3_Analiza.py                  # Statistics, grouping, and clustering
+│   │   ├── 4_Predictii.py                # Predictive analysis through linear regression
+│   │   └── 5_Covid.py                    # Impact of COVID-19 and recovery rate
+│   ├── utils/                            # Reusable functions (loading, cleaning, preprocessing)
 │   │   ├── export_data.py
 │   │   └── load_data.py
 │   └── requirements.txt
 └── sas/
-    ├── 01_import_raw.sas                         # Importul fișierelor CSV brute în SAS
-    ├── 01_import_raw-results.html                # Rezultatele rulării scriptului de import
-    ├── 02_build_final_dataset.sas                # Construirea setului final de date
-    ├── 02_build_final_dataset-results.html       # Rezultatele construirii setului final
-    ├── 03_formats_subsets_reports.sas            # Formate, subseturi și raportare
-    ├── 03_formats_subsets_reports-results.html   # Rezultatele aferente raportării
-    ├── 04_statistical_procedures.sas             # Proceduri statistice descriptive
-    ├── 04_statistical_procedures-results.html    # Rezultatele procedurilor statistice
-    ├── 05_graphs.sas                             # Generare grafice în SAS
-    └── 05_graphs-results.html                    # Grafice și rezultate generate
+    ├── 01_import_raw.sas                         # Importing raw CSV files into SAS
+    ├── 01_import_raw-results.html                # Results of running the import script
+    ├── 02_build_final_dataset.sas                # Building the final dataset
+    ├── 02_build_final_dataset-results.html       # Results of building the final dataset
+    ├── 03_formats_subsets_reports.sas            # Formats, subsets, and reporting
+    ├── 03_formats_subsets_reports-results.html   # Reporting-related results
+    ├── 04_statistical_procedures.sas             # Descriptive statistical procedures
+    ├── 04_statistical_procedures-results.html    # Results of statistical procedures
+    ├── 05_graphs.sas                             # Graph generation in SAS
+    └── 05_graphs-results.html                    # Generated graphs and results
 ```
 
 ---
 
-## Facilități implementate
+## Implemented features
 
 ### Python (Streamlit)
 
-| #  | Facilitate                                    | Descriere                                                                  |
-|----|-----------------------------------------------|----------------------------------------------------------------------------|
-| 1  | Structură multi-pagină                        | Organizarea aplicației pe mai multe pagini                                 |
-| 2  | Filtrare interactivă                          | Utilizarea widget-urilor pentru selecția datelor și a graficelor           |
-| 3  | Import date CSV                               | Încărcarea și combinarea fișierelor CSV folosind `pandas`                  |
-| 4  | Tratarea valorilor lipsă                      | Identificarea și completarea valorilor lipsă în etapa de preprocesare      |
-| 5  | Codificare și scalare                         | Codificarea variabilelor categoriale și scalarea variabilelor numerice     |
-| 6  | Agregare și grupare                           | Prelucrări statistice prin `groupby`, agregări și tabele de sinteză        |
-| 7  | Accesarea datelor cu `loc` și `iloc`          | Selecția observațiilor prin poziție și prin condiții logice                |
-| 8  | Vizualizare dinamică                          | Grafice interactive realizate cu `plotly`                                  |
-| 9  | Machine Learning cu scikit-learn             | Clusterizare K-Means și regresie liniară                                   |
-| 10 | Regresie multiplă cu statsmodels             | Estimarea unui model OLS pentru explicarea întârzierilor totale            |
-| 11 | Afișarea metricilor                           | Utilizarea `st.metric` pentru indicatori-cheie și metrici ai modelelor     |
+| #  | Feature                                       | Description                                                                  |
+|----|-----------------------------------------------|------------------------------------------------------------------------------|
+| 1  | Multi-page structure                          | Organizing the application across multiple pages                             |
+| 2  | Interactive filtering                         | Using widgets for data and chart selection                                   |
+| 3  | CSV data import                               | Loading and combining CSV files using `pandas`                               |
+| 4  | Handling missing values                       | Identifying and filling missing values during the preprocessing stage        |
+| 5  | Encoding and scaling                          | Encoding categorical variables and scaling numerical variables               |
+| 6  | Aggregation and grouping                      | Statistical processing through `groupby`, aggregations, and summary tables   |
+| 7  | Accessing data with `loc` and `iloc`          | Selecting observations by position and logical conditions                    |
+| 8  | Dynamic visualization                        | Interactive charts created with `plotly`                                     |
+| 9  | Machine Learning with scikit-learn            | K-Means clustering and linear regression                                     |
+| 10 | Multiple regression with statsmodels          | Estimating an OLS model for explaining total delays                          |
+| 11 | Displaying metrics                            | Using `st.metric` for key indicators and model metrics                       |
 
 ---
 
 ### SAS
 
-| # | Facilitate             | Descriere                                         |
-| - | ---------------------- | ------------------------------------------------- |
-| 1 | Import date            | Crearea seturilor de date SAS din fișiere externe |
-| 2 | Formate personalizate  | Definirea și utilizarea formatelor                |
-| 3 | Procesare condițională | Prelucrarea iterativă a datelor                   |
-| 4 | Subseturi              | Crearea de subseturi relevante                    |
-| 5 | Combinare date         | Îmbinarea seturilor de date folosind PROC SQL     |
-| 6 | Analiză statistică     | Calcul indicatori și generare grafice             |
+| # | Feature                | Description                                           |
+| - | ---------------------- | ----------------------------------------------------- |
+| 1 | Data import            | Creating SAS datasets from external files             |
+| 2 | Custom formats         | Defining and using formats                            |
+| 3 | Conditional processing | Iterative data processing                             |
+| 4 | Subsets                | Creating relevant subsets                             |
+| 5 | Data combination       | Merging datasets using PROC SQL                       |
+| 6 | Statistical analysis   | Calculating indicators and generating graphs          |
 
 ---
 
-## Instalare și rulare (Python)
+## Installation and running (Python)
 
-### Cerințe
+### Requirements
 
 * Python 3.9+
-* Fișierele CSV plasate în directorul `app/data/raw/`
+* CSV files placed in the `app/data/raw/` directory
 
-### Pași
+### Steps
 
 ```bash
-# Clonare repository
+# Clone repository
 git clone https://github.com/username/proiect_pachete.git
 cd proiect_pachete
 
-# Creare mediu virtual
+# Create virtual environment
 python -m venv .venv
-# Activare mediu virtual (Windows)
+# Activate virtual environment (Windows)
 .venv\Scripts\activate
-# Activare mediu virtual (Linux/Mac)
+# Activate virtual environment (Linux/Mac)
 source .venv/bin/activate
 
-# Instalare dependențe
+# Install dependencies
 pip install -r app/requirements.txt
 
-# Rulare aplicație
+# Run application
 python -m streamlit run app/0_Acasa.py
 ```
 
 ---
 
-## Autori
+## Authors
 
-| Nume             | Contribuție                                                     |
-| ---------------- | --------------------------------------------------------------- |
-| Mazâlu Mara     | Dezvoltare aplicație Python (Streamlit) și analiză exploratorie |
-| Mitu Ana-Maria-Antonia | Analiză statistică și prelucrare date în SAS                    |
+| Name             | Contribution                                                     |
+| ---------------- | ---------------------------------------------------------------- |
+| Mazâlu Mara      | Python application development (Streamlit) and exploratory analysis |
+| Mitu Ana-Maria-Antonia | Statistical analysis and data processing in SAS             |
 
-CSIE, Grupa 1091, Seria D
+CSIE, Group 1091, Series D
